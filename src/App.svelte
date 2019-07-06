@@ -9,7 +9,7 @@
     }
 
 	.framework {
-	    color: lightblue;
+	    color: dodgerblue;
 
 		&:hover {
 		  color: blue;
@@ -17,10 +17,10 @@
 	}
 
 	.creator {
-	    color: purple;
+	    color: mediumpurple;
 
 		&:hover {
-		  color: red;
+		  color: purple;
 		}
 	}
 </style>
