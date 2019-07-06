@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Angular",
+    "creator": "Google"
+  },
+  {
+    "name": "React",
+    "creator": "Facebook"
+  },
+  {
+    "name": "Svelte",
+    "creator": "Rich Harris"
+  }
+]

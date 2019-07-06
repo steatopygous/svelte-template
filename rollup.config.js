@@ -4,6 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import { scss } from '@kazzkiq/svelte-preprocess-scss';
+import json from 'rollup-plugin-json';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -45,7 +46,32 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+
+        // Allow loading of JSON files using "import blah from '.../blah.json'"
+        json({
+            // All JSON files will be parsed by default,
+            // but you can also specifically include/exclude files, using
+            //
+            // include: 'node_modules/**',
+            // exclude: [ 'node_modules/foo/**', 'node_modules/bar/**' ],
+
+            // For tree-shaking, properties will be declared as variables,
+            // using either `var` or `const`
+            preferConst: true, // Default: false
+
+            // Specify indentation for the generated default export —
+            // defaults to '\t', but we'll use two spaces (if you
+            // uncomment the next line).
+            //
+            //indent: '  ',
+
+            // Ignores indent and generates the smallest code
+            compact: true, // Default: false
+
+            // Generate a named export for every property of the JSON object
+            namedExports: true // Default: true
+        })
 	],
 	watch: {
 		clearScreen: false
