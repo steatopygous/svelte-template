@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import { scss } from '@kazzkiq/svelte-preprocess-scss';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -22,7 +23,12 @@ export default {
 			// a separate file — better for performance
 			css: css => {
 				css.write('public/bundle.css');
-			}
+			},
+                        // Allow SASS to be used in the <style> secion of
+                        // Svelte components.
+                        preprocess: {
+                          style: scss()
+                        }
 		}),
 
 		// If you have external dependencies installed from
