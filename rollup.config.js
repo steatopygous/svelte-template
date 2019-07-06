@@ -24,11 +24,11 @@ export default {
 			css: css => {
 				css.write('public/bundle.css');
 			},
-                        // Allow SASS to be used in the <style> secion of
-                        // Svelte components.
-                        preprocess: {
-                          style: scss()
-                        }
+            // Allow SASS to be used in the <style> section
+            // of Svelte components.
+            preprocess: {
+              style: scss()
+            }
 		}),
 
 		// If you have external dependencies installed from
