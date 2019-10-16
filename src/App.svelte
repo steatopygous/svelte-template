@@ -3,7 +3,7 @@
 	export let name;
 </script>
 
-<style type="text/scss">
+<style type="text/sass">
     .main {
         font-size: 24px;
     }
