@@ -1,6 +1,10 @@
 <script>
-    import frameworks from './example.json'
-	export let name;
+    import { Router, Route, Link, navigate } from 'svelte-routing';
+
+    import Index from './pages/Index.svelte';
+    import About from './pages/About.svelte';
+
+    let url = '/';
 </script>
 
 <style type="text/scss">
@@ -9,40 +13,21 @@
         flex-direction: column;
         align-items: center;
     }
-
-    .main {
-        font-size: 24px;
-    }
-
-	.framework {
-	    color: dodgerblue;
-
-		&:hover {
-		  color: blue;
-		}
-	}
-
-	.creator {
-	    color: mediumpurple;
-
-		&:hover {
-		  color: purple;
-		}
-	}
 </style>
 
 <div class="container">
-    <a href="https://svelte.dev/">
-        <img src="/assets/svelte-icon.png" alt="svelte-icon" />
-    </a>
+    <Router url="{url}">
+        <nav class="page-links">
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+        </nav>
 
-    <div>
-        {#each frameworks as { name, creator }}
-          <div class="main">
-            <span class="framework">{name}</span>
-            was created by
-            <span class="creator">{creator}</span>
-          </div>
-        {/each}
-    </div>
+        <br/>
+
+        <div>
+            <Route path="/"><Index /></Route>
+            <Route path="/about"><About /></Route>
+        </div>
+    </Router>
 </div>
+
